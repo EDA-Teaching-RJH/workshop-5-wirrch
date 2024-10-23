@@ -40,7 +40,8 @@ def main():
 	elif action == "3": 
 		add_crew_member() 
 	elif action == "4": 
-		print(f"Simulation ended. Final score: {score}") break 
+		print(f"Simulation ended. Final score: {score}") 
+		break 
 	else: 
 		print("Invalid action. Please try again.") 
 		
@@ -51,10 +52,14 @@ def main():
 		replenish_resources() 
 
 def display_status(): 
-# TODO: Implement function to display ship status, resources, and crew 
+# TODO: Implement function to display ship status, resources, and crew
+
 
 def get_user_action(): 
 # TODO: Implement function to get and return user's chosen action 
+	
+	
+	return input()
 
 def run_mission(): 
 	mission_type = random.choice(MISSION_TYPES) 
