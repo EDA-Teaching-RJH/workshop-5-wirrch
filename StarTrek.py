@@ -43,7 +43,8 @@ def main():
 			print(f"Simulation ended. Final score: {score}")
 			break
 		else: 
-			print("Invalid action. Please try again.") 
+			print("Invalid action. Please try again.")
+			continue
 			
 		turns += 1 
 		handle_random_event() 
@@ -55,8 +56,10 @@ def display_status():
 	# TODO: Implement function to display ship status, resources, and crew
 	print("Current ship status:")
 
+	# first layer of dictionary
 	for system, name in ship.items():
 		print(f"{system.capitalize()}:")
+		# prints each second layer item and its value
 		for resource, value in name.items():
 			print(f"	{resource.capitalize()} = {value}")
 		
@@ -68,7 +71,22 @@ def get_user_action():
 
 def run_mission(): 
 	mission_type = random.choice(MISSION_TYPES) 
-	print(f"\nNew mission: {mission_type}") 
+	print(f"\nNew mission: {mission_type}")
+	new_score = 0
+
+	match mission_type:
+		case "Exploration":
+			print("lol")
+		case "Diplomacy":
+			print("lol")
+		case "Combat":
+			print("lol")
+		case "Rescue":
+			print("lol")
+		case "Scientific Research":
+			print("lol")
+
+	return new_score
 
 	# TODO: Implement mission logic for different mission types 
 	# Return the score earned from the mission 
