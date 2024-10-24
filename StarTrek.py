@@ -30,7 +30,9 @@ def main():
 	turns = 0 
 
 	while True: 
+		use_resource("torpedoes",100)
 		display_status() 
+
 		action = get_user_action() 
 
 		if action == "1": 
@@ -43,7 +45,7 @@ def main():
 			print(f"Simulation ended. Final score: {score}")
 			break
 		else: 
-			print("Invalid action. Please try again.")
+			print("ERROR: Invalid action. Please try again.")
 			continue
 			
 		turns += 1 
@@ -76,15 +78,15 @@ def run_mission():
 
 	match mission_type:
 		case "Exploration":
-			print("lol")
+			print("Captain's Log: 'The Enterprise has entered an uncharted sector on the edge of the Beta Quadrant. Long-range sensors have detected an anomalous planet, emitting unknown energy signatures. Initial readings suggest the planet has never been explored by any Federation ship.'")
 		case "Diplomacy":
-			print("lol")
+			print("Captain's Log: 'The Federation has been called upon to mediate peace talks between Dothran and Velari factions, and I have been tasked with representing Starfleet in these negotiations. Both sides remain deeply entrenched in their positions, but I believe that common ground can be found.'")
 		case "Combat":
-			print("lol")
+			print("Captain's Log: 'The Enterprise has been drawn into a confrontation with a hostile fleet. Despite our best efforts to de-escalate the situation, negotiations have failed. We are now preparing for combat.'")
 		case "Rescue":
-			print("lol")
+			print("Captain's Log: 'We have received a distress signal from a nearby vessel. Initial scans reveal extensive damage to their hull and life support systems. Time is of the essence.'")
 		case "Scientific Research":
-			print("lol")
+			print("Captain's Log: 'The Enterprise is currently in orbit around a rare pulsar. This phenomenon offers a unique opportunity to expand our understanding of subspace physics. The crew is working closely with the research team to gather data from the pulsar’s intense magnetic field. This discovery could redefine our knowledge of stellar evolution.'")
 
 	return new_score
 
@@ -99,15 +101,26 @@ def add_crew_member():
 	# TODO: Implement functionality to add a new crew member
 	new_name = input("Enter new crew member's name: ")
 	new_role = input("Enter this new member's role: ")
-	ship["crew"].updat
+	ship["crew"][new_name] = new_role
+	print(f"Welcome aboard the USS Enterprise, {new_name}.")
 
 # def handle_random_event():
 # 	# TODO: Implement random events that can occur during the simulation 
 
-# def use_resource(resource, amount): 
-# 	# TODO: Implement resource usage logic 
+def use_resource(resource, amount): 
+ 	# TODO: Implement resource usage logic 
+	if ship["resources"][resource] >= amount:
+		ship["resources"][resource] -= amount
+		print(f"{resource} decreased by {amount} ({ship["resources"][resource]} remaining)")
+	else:
+		print(f"ERROR: You only have {ship["resources"][resource]} {resource} ({amount - ship["resources"][resource]} more needed)")
 
-# def replenish_resources(): 
-# 	# TODO: Implement resource replenishment logic 
+def replenish_resources(): 
+ 	# TODO: Implement resource replenishment logic
+	ship["resources"]["energy"] = 1000
+	ship["resources"]["torpedoes"] = 10
+	print("Captain's Log: 'The Enterprise has completed its scheduled systems replenishment. Our energy reserves, replicator supplies, and essential materials have been fully restored, ensuring the ship remains at peak efficiency.'")
+	print("(Ship's Energy returned to 1000)")
+	print("(Ship's Torpedoes returned to 10)")
 
 main()
